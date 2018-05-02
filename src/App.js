@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
+import ContactsView from './ContactsView'
 
 
 class App extends Component {
     render() {
         return (
-            <h1>Contacts</h1>
+            <ContactsView/>
         )
     }
 }
