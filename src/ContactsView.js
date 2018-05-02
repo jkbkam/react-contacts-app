@@ -3,27 +3,26 @@ import React, {Component} from 'react'
 
 class ContactsView extends Component {
     state = {
-        contactName: 'janusz',
-        contactNumber: '123123',
-        contactEmail: 'emloe@melfo',
-        contactCategory: 'family',
+        contactName: '',
+        contactNumber: '',
+        contactEmail: '',
+        contactCategory: '',
         contacts: [
-            {
-                id: 1,
-                name: 'janek',
-                number: '1212',
-                email: 'eloelo@',
-                category: 'family'
-            },
-            {
-                id: 2,
-                name: 'john',
-                number: '122312',
-                email: 'eloelo@',
-                category: 'family'
-            }
+
         ]
     }
+
+    removeContact = contactId => {
+        this.setState(
+            ({contacts}) => ({
+                contacts: contacts.filter(
+                    contact => contact.id !== contactId
+                )
+            })
+        )
+    }
+
+
     handleSubmit = event => {
         event.preventDefault()
         console.log(this.state.contactName, this.state.contactNumber, this.state.contactEmail, this.state.contactCategory)
@@ -101,6 +100,10 @@ class ContactsView extends Component {
                                 <li key={contact.id}>
                                     {contact.name} <br/>
                                     {contact.number} : {contact.email} : {contact.category}
+                                    <button
+                                        onClick={() => this.removeContact(contact.id)}
+                                        > Delete
+                                    </button>
                                 </li>
                             )
                         )
