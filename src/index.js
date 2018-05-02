@@ -1,7 +1,11 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ContactsView from './ContactsView'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
-    <ContactsView />
-)
+    <App/>,
+    document.getElementById('root')
+);
+
+registerServiceWorker()
