@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './main.css'
 
 
 class ContactsView extends Component {
@@ -68,27 +69,31 @@ class ContactsView extends Component {
 
     render() {
         return (
-            <div>
+            <div className="contact">
                 <h1>Contacts</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input
                         value={this.state.contactName}
                         onChange={this.handleChange}
+                        placeholder={'Name'}
                     />
                     <br/>
                     <input
                         value={this.state.contactNumber}
                         onChange={this.handleContactNumberChange}
+                        placeholder={'Number'}
                     />
                     <br/>
                     <input
                         value={this.state.contactEmail}
                         onChange={this.handleContactEmailChange}
+                        placeholder={'Email'}
                     />
                     <br/>
                     <input
                         value={this.state.contactCategory}
                         onChange={this.handleContactCategoryChange}
+                        placeholder={'Category'}
                     />
                     <button>Add</button>
                 </form>
@@ -98,8 +103,9 @@ class ContactsView extends Component {
                         this.state.contacts.map(
                             contact => (
                                 <li key={contact.id}>
-                                    {contact.name} <br/>
-                                    {contact.number} : {contact.email} : {contact.category}
+                                    <strong>{contact.name}</strong> <br/>
+                                    {contact.number}, {contact.email}, [{contact.category}]
+
                                     <button
                                         onClick={() => this.removeContact(contact.id)}
                                         > Delete
