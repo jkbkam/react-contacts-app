@@ -8,12 +8,17 @@ class ContactsView extends Component {
     }
     handleSubmit = event => {
         event.preventDefault()
-        console.log('submit')
+        console.log(this.state.contactName, this.state.contactNumber)
     }
 
     handleChange = event => {
         this.setState({
             contactName: event.target.value
+        })
+    }
+    handleContactNumberChange = event => {
+        this.setState({
+            contactNumber: event.target.value
         })
     }
 
@@ -26,8 +31,10 @@ class ContactsView extends Component {
                         value={this.state.contactName}
                         onChange={this.handleChange}
                     />
+                    <br />
                     <input
                         value={this.state.contactNumber}
+                        onChange={this.state.handleContactNumberChange}
                         />
                     <button>Add</button>
                 </form>
