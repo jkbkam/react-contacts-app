@@ -29,14 +29,20 @@ class ContactsView extends Component {
         console.log(this.state.contactName, this.state.contactNumber, this.state.contactEmail, this.state.contactCategory)
 
         this.setState({
+            contactName: '',
+            contactNumber: '',
+            contactEmail: '',
+            contactCategory: '',
             contacts: this.state.contacts.concat({
-                id: this.state.contacts.length + 1,
+                id: Math.max.apply(null, this.state.contacts.map(contact => contact.id)) + 1,
                 name: this.state.contactName,
+                number: this.state.contactNumber,
                 email: this.state.contactEmail,
                 category: this.state.contactCategory
 
             })
         })
+
     }
     handleChange = event => {
         this.setState({
@@ -70,17 +76,17 @@ class ContactsView extends Component {
                         value={this.state.contactName}
                         onChange={this.handleChange}
                     />
-                    <br />
+                    <br/>
                     <input
                         value={this.state.contactNumber}
-                        onChange={this.state.handleContactNumberChange}
-                        />
-                    <br />
+                        onChange={this.handleContactNumberChange}
+                    />
+                    <br/>
                     <input
                         value={this.state.contactEmail}
                         onChange={this.handleContactEmailChange}
                     />
-                    <br />
+                    <br/>
                     <input
                         value={this.state.contactCategory}
                         onChange={this.handleContactCategoryChange}
@@ -90,14 +96,14 @@ class ContactsView extends Component {
 
                 <ul>
                     {
-                   this.state.contacts.map(
-                    contact => (
-                        <li key={contact.id}>
-                            {contact.name} <br />
-                            {contact.number} : {contact.email} : {contact.category}
-                        </li>
-                    )
-                   )
+                        this.state.contacts.map(
+                            contact => (
+                                <li key={contact.id}>
+                                    {contact.name} <br/>
+                                    {contact.number} : {contact.email} : {contact.category}
+                                </li>
+                            )
+                        )
                     }
                 </ul>
             </div>
