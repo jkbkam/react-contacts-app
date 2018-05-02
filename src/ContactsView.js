@@ -90,11 +90,14 @@ class ContactsView extends Component {
                         placeholder={'Email'}
                     />
                     <br/>
-                    <input
-                        value={this.state.contactCategory}
-                        onChange={this.handleContactCategoryChange}
-                        placeholder={'Category'}
-                    />
+                     <select value={this.state.contactCategory}
+                            onChange={this.handleContactCategoryChange}>
+                         <option value="Category">Choose category</option>
+                         <option value="Family">Family</option>
+                        <option value="Friend">Friend</option>
+                        <option value="Work">Work</option>
+                        <option value="Other">Other</option>
+                    </select>
                     <button>Add</button>
                 </form>
 
