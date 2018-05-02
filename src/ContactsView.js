@@ -33,7 +33,7 @@ class ContactsView extends Component {
             contactEmail: '',
             contactCategory: '',
             contacts: this.state.contacts.concat({
-                id: Math.max.apply(null, this.state.contacts.map(contact => contact.id)) + 1,
+                id: this.state.contacts.length === 0 ? 1 : Math.max(...this.state.contacts.map(contact => contact.id)) + 1,
                 name: this.state.contactName,
                 number: this.state.contactNumber,
                 email: this.state.contactEmail,
